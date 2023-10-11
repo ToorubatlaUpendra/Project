@@ -1,0 +1,105 @@
+/* .centered-word {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.centered-word1 {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.centered-word2 {
+  position: absolute;
+  top: 25%;
+  left: 15%;
+}
+
+.list_of_items {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.centered-horizontal {
+  text-align: center;
+} */
+#main {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  margin: 2px 25px;
+}
+.header1 {
+  /* border: solid skyblue; */
+  background-color: aquamarine;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin-left: 15%;
+  position: relative;
+}
+
+.subBox {
+  margin-left: 20px;
+  margin-top: -6px;
+  background-color: antiquewhite;
+  max-width: 20%;
+
+  padding: 8px;
+  height: fit-content;
+}
+.subBox > h3 {
+  background-color: grey;
+  margin: 0px;
+}
+
+.right {
+  text-align: right;
+}
+.containerflex {
+  display: flex;
+}
+.header2 {
+  position: relative;
+  top: -22px;
+  margin-left: 20px;
+}
+
+.bold {
+  margin-left: 20px;
+  font-weight: bold;
+  font-size: medium;
+}
+.bold1 {
+  /* margin-left: 20px; */
+  font-weight: bold;
+  font-size: medium;
+}
+
+.fornotfiltered {
+  /* border: solid black; */
+}
+
+.subfornotfiltered {
+  border: solid black;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  width: 50%;
+  text-align: center;
+  margin-top: 5%;
+  margin-left: 20%;
+  margin-right: 20%;
+  box-shadow: 5px 5px 10px 5px #888888;
+  text-align: center;
+}
+.moving {
+  position: relative;
+  top: -90px;
+}

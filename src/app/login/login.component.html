@@ -1,0 +1,52 @@
+<div *ngIf="isValid">invalid username/password</div>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="mainBorder">
+      <div class="container">
+        <form
+          action="
+            "
+        >
+          <div class="form-group">
+            <label for="username"></label>
+            <input
+              style="height: 22px"
+              type="text"
+              ngModel
+              name="username"
+              placeholder="Enter Username"
+              #un="ngModel"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input
+              style="height: 22px"
+              type="password"
+              placeholder="Enter your Password"
+              ngModel
+              #pass="ngModel"
+              name="Password"
+              required
+            />
+          </div>
+
+          <button
+            class="button"
+            (click)="onSubmit(un.value, pass.value)"
+            [disabled]="un.value === '' || pass.value === ''"
+          >
+            Login
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

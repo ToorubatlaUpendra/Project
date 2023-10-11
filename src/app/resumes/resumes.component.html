@@ -1,0 +1,166 @@
+<!-- <p>resumes works!</p>
+<p>{{jsonData}}</p>
+<button (click)="getData()">calling</button>
+<p>{{jsonData1}}</p> -->
+
+<!-- <p>{{this.jsonData.resume[0].basics.name}}</p> -->
+<!-- <div *ngFor="let elemenet of this.jsonData.resume">
+    {{elemenet.basics.name}}
+</div> -->
+<!-- <button (click)="filteredFunction()"> to check serach</button> -->
+<!-- {{this.jsonData.resume[index].basics.name}} -->
+
+<div class="container">
+  <button
+    (click)="previousIndex()"
+    [disabled]="
+      this.index !== 0 && !x && this.index != this.filteredIndex[0] ? 0 : 1
+    "
+  >
+    Previous
+  </button>
+  <input
+    class="centered-horizontal"
+    type="text"
+    [(ngModel)]="searchQuery"
+    (keyup)="filteredFunction($event)"
+    placeholder="search here"
+  />
+
+  <button
+    [disabled]="
+      this.index !== this.jsonData.resume.length - 1 &&
+      !x &&
+      this.index != this.filteredIndex[this.filteredIndex.length - 1]
+        ? 0
+        : 1
+    "
+    (click)="nextIndex()"
+  >
+    Next
+  </button>
+</div>
+
+<div class="fornotfiltered" *ngIf="x">
+  <div class="subfornotfiltered">
+    <span>
+      <img class="imageplacing" src="assets/Images/Invalid.png" alt="kjjkl" />
+    </span>
+    <span class="moving">No such results found</span>
+  </div>
+</div>
+
+<div *ngIf="!x" id="main">
+  <div class="header1">
+    <h1 class="centered-word">{{ this.jsonData.resume[index].basics.name }}</h1>
+    <h2 class="centered-word1">
+      Appiled For :{{ this.jsonData.resume[index].basics.AppliedFor }}
+    </h2>
+  </div>
+  <div class="containerflex">
+    <div class="subBox">
+      <h3>Personal Information</h3>
+      <div class="right">{{ this.jsonData.resume[index].basics.phone }}</div>
+      <div class="right">{{ this.jsonData.resume[index].basics.email }}</div>
+      <div class="right">
+        <a [href]="this.jsonData.resume[index].basics.profiles.url">{{
+          this.jsonData.resume[index].basics.profiles.network
+        }}</a>
+      </div>
+      <h3>Technical Skills</h3>
+      <div
+        class="right"
+        *ngFor="let skill of this.jsonData.resume[index].skills.keywords"
+      >
+        {{ skill }}
+      </div>
+
+      <h3>Hobbies</h3>
+      <div
+        class="right"
+        *ngFor="let hobby of this.jsonData.resume[index].interests.hobbies"
+      >
+        {{ hobby }}
+      </div>
+    </div>
+    <div class="header2">
+      <div *ngFor="let comp of resumeHeadings">
+        <h3 class="centered-word2">
+          {{ comp === "work" ? "Work Experience in previous company" : comp }}
+        </h3>
+        <div>
+          <div
+            *ngFor="let item of this.jsonData.resume[index][comp] | keyvalue"
+          >
+            <div *ngIf="comp == 'work'">
+              <span class="bold">
+                {{ item.key }}
+              </span>
+              <span>
+                {{ item.value }}
+              </span>
+            </div>
+            <div *ngIf="comp == 'Internship'">
+              <ul>
+                <li>
+                  <span class="bold1">
+                    {{ item.key }}
+                  </span>
+                  <span>
+                    {{ item.value }}
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div *ngIf="comp == 'achievements'">
+            <ul>
+              <li>{{ this.jsonData.resume[index].achievements.Summary }}</li>
+            </ul>
+          </div>
+          <div *ngIf="comp == 'projects'">
+            <span class="bold1"
+              >{{ this.jsonData.resume[index].projects.name }} :</span
+            >
+            <span>{{ this.jsonData.resume[index].projects.description }}</span>
+          </div>
+          <div *ngIf="comp == 'education'">
+            <ul>
+              <li>
+                <span class="bold1">UG : </span>
+                <span
+                  >{{ this.jsonData.resume[index][comp].UG.institute }},{{
+                    this.jsonData.resume[index][comp].UG.course
+                  }},{{ this.jsonData.resume[index][comp].UG["Start Date"] }},{{
+                    this.jsonData.resume[index][comp].UG["End Date"]
+                  }},{{ this.jsonData.resume[index][comp].UG.cgpa }}</span
+                >
+              </li>
+              <li>
+                <span class="bold1">PU : </span>
+                <span
+                  >{{
+                    this.jsonData.resume[index][comp]["Senior Secondary"]
+                      .institute
+                  }},{{
+                    this.jsonData.resume[index][comp]["Senior Secondary"].cgpa
+                  }}</span
+                >
+              </li>
+              <li>
+                <span class="bold1">High School : </span>
+                <span
+                  >{{
+                    this.jsonData.resume[index][comp]["High School"].institute
+                  }},{{
+                    this.jsonData.resume[index][comp]["High School"].cgpa
+                  }}</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
